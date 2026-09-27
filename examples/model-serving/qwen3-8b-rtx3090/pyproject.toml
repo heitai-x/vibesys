@@ -10,6 +10,7 @@ dependencies = [
   "uvicorn>=0.29",
   "vs-bench",
   "huggingface-hub>=0.30",
+  "accelerate>=1.0",
 ]
 
 [tool.uv]
