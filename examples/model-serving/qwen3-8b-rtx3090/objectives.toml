@@ -1,0 +1,24 @@
+# Multi-objective (Pareto-frontier) configuration shared by optimization loops.
+#
+# Presence of this file next to OBJECTIVE.md switches the run into Pareto mode:
+# candidates are retained by non-domination across the axes below instead of a
+# single scalar. The evolve loop uses the frontier for population selection;
+# the agent loop exposes reviewed frontier checkpoints as alternate parents.
+# Each `name` MUST exactly match a top-level benchmark output field. A
+# missing/misnamed field makes that candidate incomparable and excludes it from
+# the computed frontier.
+
+[pareto]
+# Retained repeated rows and the workload's overload-resolution rule use 3% as
+# the ambiguity band. A point only dominates another outside this margin.
+relative_noise = 0.03
+
+# Primary axis — also drives perf_metric / best() / the scalar fallback.
+[[objective]]
+name = "aggregate_throughput"   # output tok/s, from benchmark JSON
+direction = "max"
+
+# Latency axis — p99 end-to-end latency at the selected sustainable point.
+[[objective]]
+name = "p99_latency_ms"         # milliseconds, from benchmark JSON
+direction = "min"

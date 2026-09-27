@@ -121,6 +121,10 @@ path = "examples/model-serving/qwen3-32b-code-edit"
 layout = "legacy"
 
 [[example]]
+path = "examples/model-serving/qwen3-8b-rtx3090"
+layout = "legacy"
+
+[[example]]
 path = "examples/model-serving/qwen3.5-397b-a17b-4xb200"
 layout = "legacy"
 
